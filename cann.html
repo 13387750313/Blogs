@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CANN - 异构计算架构</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="app-header">
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link" data-page="index">首页</a>
+      <a href="cann.html" class="nav-link active" data-page="cann">CANN</a>
+      <a href="cangjie.html" class="nav-link" data-page="cangjie">仓颉</a>
+      <a href="arkts.html" class="nav-link" data-page="arkts">ArkTs</a>
+      <a href="loongarch.html" class="nav-link" data-page="loongarch">LoongArch</a>
+      <a href="toolbox.html" class="nav-link" data-page="toolbox">工具箱</a>
+      <a href="model.html" class="nav-link" data-page="model">三维建模</a>
+      <a href="fine.html" class="nav-link" data-page="fine">精致美食</a>
+      <a href="music.html" class="nav-link" data-page="music">🎵 音乐</a>
+    </nav>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <div class="sidebar-layout">
+      <!-- 左侧边栏 -->
+      <aside class="sidebar">
+        <h2>CANN 导航</h2>
+        <ul id="cannNavList">
+          <li data-section="overview" class="active">📋 架构概览</li>
+          <li data-section="operators">🚀 算子开发</li>
+          <li data-section="framework">🧠 框架适配</li>
+          <li data-section="toolchain">🔧 工具链</li>
+          <li data-section="performance">📊 性能调优</li>
+        </ul>
+      </aside>
+
+      <!-- 右侧内容 -->
+      <div class="content-area">
+        <!-- 架构概览 -->
+        <div id="overview-content" class="content-section active">
+          <h1>CANN - 异构计算架构</h1>
+          <p>CANN（Compute Architecture for Neural Networks）是华为面向 AI 场景推出的异构计算架构，为昇腾 AI 处理器提供强大的算力支撑。</p>
+
+          <h2>核心能力</h2>
+          <div class="card">
+            <h3>🚀 高性能算子库</h3>
+            <p>提供丰富的内置算子，支持自定义算子开发，充分发挥昇腾芯片算力</p>
+          </div>
+
+          <div class="card">
+            <h3>🧠 AI 框架适配</h3>
+            <p>支持 MindSpore、PyTorch、TensorFlow 等主流 AI 框架无缝对接</p>
+          </div>
+
+          <div class="card">
+            <h3>🔧 开发工具链</h3>
+            <p>包含 Profiling 性能分析、模型转换、精度调试等全套开发工具</p>
+          </div>
+
+          <h2>应用场景</h2>
+          <p>图像识别 · 自然语言处理 · 智能推荐 · 自动驾驶 · 科学计算</p>
+        </div>
+
+        <!-- 算子开发 -->
+        <div id="operators-content" class="content-section" style="display:none;">
+          <h1>算子开发</h1>
+          <p>CANN 提供灵活的算子开发框架，支持开发者自定义高性能算子。</p>
+
+          <h2>开发方式</h2>
+          <div class="card">
+            <h3>📐 Ascend C 编程</h3>
+            <p>基于 C/C++ 的算子开发语言，提供简洁的 API 接口，降低开发门槛</p>
+          </div>
+
+          <div class="card">
+            <h3>🔨 TIK 编程</h3>
+            <p>基于 Python DSL 的算子开发方式，适合快速原型验证</p>
+          </div>
+
+          <h2>开发流程</h2>
+          <p>算子分析 → 代码实现 → 编译构建 → 精度验证 → 性能调优</p>
+        </div>
+
+        <!-- 框架适配 -->
+        <div id="framework-content" class="content-section" style="display:none;">
+          <h1>框架适配</h1>
+          <p>CANN 支持多种主流 AI 框架，开发者可以无缝迁移现有模型到昇腾平台。</p>
+
+          <h2>支持的框架</h2>
+          <div class="card">
+            <h3>🧠 MindSpore</h3>
+            <p>华为自研 AI 框架，与 CANN 深度集成，性能最优</p>
+          </div>
+
+          <div class="card">
+            <h3>🔥 PyTorch</h3>
+            <p>通过 torch_npu 插件实现 PyTorch 模型的无缝迁移</p>
+          </div>
+
+          <div class="card">
+            <h3>📊 TensorFlow</h3>
+            <p>支持 TensorFlow 模型通过 ATC 工具转换部署</p>
+          </div>
+        </div>
+
+        <!-- 工具链 -->
+        <div id="toolchain-content" class="content-section" style="display:none;">
+          <h1>开发工具链</h1>
+          <p>CANN 提供完整的开发工具链，覆盖模型转换、调试、部署全流程。</p>
+
+          <h2>核心工具</h2>
+          <div class="card">
+            <h3>🔄 ATC 模型转换</h3>
+            <p><code>atc --model=model.pb --framework=3 --output=model</code></p>
+            <p>将第三方模型转换为昇腾离线模型</p>
+          </div>
+
+          <div class="card">
+            <h3>📈 Profiling 分析</h3>
+            <p><code>msprof --application-profiling=on</code></p>
+            <p>性能瓶颈分析与算子耗时统计</p>
+          </div>
+
+          <div class="card">
+            <h3>🔍 精度调试</h3>
+            <p><code>msaccucmp.py compare</code></p>
+            <p>逐层精度对比，快速定位精度问题</p>
+          </div>
+        </div>
+
+        <!-- 性能调优 -->
+        <div id="performance-content" class="content-section" style="display:none;">
+          <h1>性能调优</h1>
+          <p>通过系统化的性能调优方法，充分释放昇腾 AI 处理器的算力潜力。</p>
+
+          <h2>调优策略</h2>
+          <div class="card">
+            <h3>⚡ 算子融合</h3>
+            <p>将多个小算子融合为一个大算子，减少内存访问开销</p>
+          </div>
+
+          <div class="card">
+            <h3>🔀 流水线并行</h3>
+            <p>利用 AI Core 与 AICPU 并行执行，提升整体吞吐量</p>
+          </div>
+
+          <div class="card">
+            <h3>💾 内存优化</h3>
+            <p>合理规划 Unified Buffer 与 L1 Buffer，减少数据搬运</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="app-footer">
+    <p>© 2025 CANN · 模型训练与智能计算</p>
+  </footer>
+
+  <!-- 背景音乐 -->
+  <audio id="bgMusic"></audio>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>

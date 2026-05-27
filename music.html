@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CANN · 琴师 - 背景音乐</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .music-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      min-height: calc(100vh - 160px);
+    }
+    .music-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .music-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #00f5ff, #b026ff, #ff2d95);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .music-subtitle {
+      color: #a0a0b0;
+      font-size: 1.1rem;
+    }
+    .video-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 1rem auto 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0, 245, 255, 0.2);
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-info {
+      padding: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .video-info h3 {
+      color: var(--accent-cyan);
+      margin-bottom: 0.5rem;
+    }
+    .video-info p {
+      color: var(--text-secondary);
+    }
+    .player-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+    .player-visual {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00f5ff, #b026ff);
+      box-shadow: 0 0 50px rgba(0, 245, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      animation: pulse-rotate 4s ease-in-out infinite;
+    }
+    @keyframes pulse-rotate {
+      0%, 100% { 
+        transform: scale(1) rotate(0deg);
+        box-shadow: 0 0 50px rgba(0, 245, 255, 0.4);
+      }
+      50% { 
+        transform: scale(1.05) rotate(180deg);
+        box-shadow: 0 0 70px rgba(176, 38, 255, 0.5);
+      }
+    }
+    .player-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .player-btn {
+      background: linear-gradient(135deg, #00f5ff, #b026ff);
+      border: none;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .player-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(0, 245, 255, 0.5);
+    }
+    .player-btn.play {
+      width: 70px;
+      height: 70px;
+      font-size: 1.5rem;
+    }
+    .volume-control {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    .volume-control span {
+      color: var(--text-secondary);
+      min-width: 50px;
+    }
+    .volume-slider {
+      flex: 1;
+      accent-color: #00f5ff;
+      height: 6px;
+    }
+    .lyrics {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(0, 245, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .lyrics h4 {
+      color: var(--accent-purple);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .lyrics p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      text-align: center;
+    }
+    /* 播放列表 */
+    .playlist-panel {
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+    .playlist-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+      margin-bottom: 0.4rem;
+      background: rgba(255,255,255,0.03);
+    }
+    .playlist-item:hover {
+      background: rgba(0, 245, 255, 0.08);
+      border-color: rgba(0, 245, 255, 0.25);
+    }
+    .playlist-item.active {
+      background: linear-gradient(135deg, rgba(0, 245, 255, 0.12), rgba(176, 38, 255, 0.08));
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px rgba(0, 245, 255, 0.2);
+    }
+    .playlist-num {
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 1rem;
+      min-width: 24px;
+    }
+    .playlist-item.active .playlist-num {
+      color: var(--accent-cyan);
+    }
+    .playlist-info {
+      flex: 1;
+    }
+    .playlist-title {
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .playlist-item.active .playlist-title {
+      color: var(--accent-cyan);
+    }
+    .playlist-artist {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .playlist-status {
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="app-header">
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link" data-page="index">首页</a>
+      <a href="cann.html" class="nav-link" data-page="cann">CANN</a>
+      <a href="cangjie.html" class="nav-link" data-page="cangjie">仓颉</a>
+      <a href="arkts.html" class="nav-link" data-page="arkts">ArkTs</a>
+      <a href="loongarch.html" class="nav-link" data-page="loongarch">LoongArch</a>
+      <a href="toolbox.html" class="nav-link" data-page="toolbox">工具箱</a>
+      <a href="model.html" class="nav-link" data-page="model">三维建模</a>
+      <a href="fine.html" class="nav-link" data-page="fine">精致美食</a>
+      <a href="music.html" class="nav-link active" data-page="music">🎵 音乐</a>
+    </nav>
+  </header>
+
+  <!-- 音乐页面 -->
+  <main class="main-content">
+    <div class="music-page">
+     
+      
+      <!-- 本地播放器 -->
+      <div class="player-card">
+        <audio id="bgMusic"></audio>
+        
+        <div class="player-visual">♪</div>
+        
+        <p id="nowPlaying" style="color:var(--accent-cyan);margin-bottom:1rem;font-size:0.95rem;"></p>
+        
+        <div class="player-controls">
+          <button class="player-btn" id="prevBtn" title="上一首">⏮</button>
+          <button class="player-btn play" id="playBtn" title="播放">▶</button>
+          <button class="player-btn" id="nextBtn" title="下一首">⏭</button>
+          <button class="player-btn" id="muteBtn" title="静音">🔊</button>
+        </div>
+        
+        <div class="volume-control">
+          <span>🔈</span>
+          <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30">
+          <span id="volumeValue">30%</span>
+        </div>
+
+        <!-- 播放列表 -->
+        <div class="playlist-panel" id="musicPlaylist"></div>
+        
+        <div class="lyrics">
+          <h4>🎻 琴师 · 二胡版</h4>
+          <p>
+            灯火竹帘 纱，随风轻摇曳<br>
+            明月照堂前 相思千万年<br>
+            弦上诉别离 声声催人泪<br>
+            琴师独抚弦 心事付瑶琴<br><br>
+            江湖路远 山高水长<br>
+            一曲肝肠断 何处话凄凉<br>
+            尘世浮华皆云烟<br>
+            唯有琴音永流传
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="app-footer">
+    <p>© 2025 CANN · CyberVerse | 嵌入式 · LoongArch · 3D · 美食</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>仓颉 - 新一代编程语言</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="app-header">
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link" data-page="index">首页</a>
+      <a href="cann.html" class="nav-link" data-page="cann">CANN</a>
+      <a href="cangjie.html" class="nav-link active" data-page="cangjie">仓颉</a>
+      <a href="arkts.html" class="nav-link" data-page="arkts">ArkTs</a>
+      <a href="loongarch.html" class="nav-link" data-page="loongarch">LoongArch</a>
+      <a href="toolbox.html" class="nav-link" data-page="toolbox">工具箱</a>
+      <a href="model.html" class="nav-link" data-page="model">三维建模</a>
+      <a href="fine.html" class="nav-link" data-page="fine">精致美食</a>
+      <a href="music.html" class="nav-link" data-page="music">🎵 音乐</a>
+    </nav>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <div class="sidebar-layout">
+      <!-- 左侧边栏 -->
+      <aside class="sidebar">
+        <h2>仓颉导航</h2>
+        <ul id="cangjieNavList">
+          <li data-section="overview" class="active">📋 语言概览</li>
+          <li data-section="features">⚡ 语言特性</li>
+          <li data-section="syntax">🧩 语法示例</li>
+          <li data-section="ecosystem">🌐 开发生态</li>
+          <li data-section="interop">🔗 互操作性</li>
+        </ul>
+      </aside>
+
+      <!-- 右侧内容 -->
+      <div class="content-area">
+        <!-- 语言概览 -->
+        <div id="overview-content" class="content-section active">
+          <h1>仓颉 - 新一代编程语言</h1>
+          <p>仓颉编程语言是华为自主研发的通用编程语言，面向全场景智能应用，兼顾高性能与高安全性。</p>
+
+          <h2>设计理念</h2>
+          <div class="card">
+            <h3>⚡ 原生高性能</h3>
+            <p>编译型语言，支持轻量级用户态线程，提供卓越的运行效率</p>
+          </div>
+
+          <div class="card">
+            <h3>🛡️ 强安全保证</h3>
+            <p>内存安全、类型安全，从语言层面消除常见安全漏洞</p>
+          </div>
+
+          <div class="card">
+            <h3>🧩 现代化语法</h3>
+            <p>简洁优雅的语法设计，支持模式匹配、代数数据类型等现代编程范式</p>
+          </div>
+
+          <h2>应用领域</h2>
+          <p>系统编程 · 云原生服务 · 移动端开发 · 嵌入式应用 · AI 基础设施</p>
+        </div>
+
+        <!-- 语言特性 -->
+        <div id="features-content" class="content-section" style="display:none;">
+          <h1>语言特性</h1>
+          <p>仓颉融合了多种现代编程语言的优点，提供安全、高效、易用的编程体验。</p>
+
+          <h2>核心特性</h2>
+          <div class="card">
+            <h3>🔄 轻量级线程</h3>
+            <p>内置协程支持，基于用户态线程模型，轻松实现高并发编程</p>
+          </div>
+
+          <div class="card">
+            <h3>🧠 模式匹配</h3>
+            <p>强大的模式匹配语法，支持结构解构、类型匹配、守卫条件</p>
+          </div>
+
+          <div class="card">
+            <h3>📦 代数数据类型</h3>
+            <p>枚举与结构体的完美结合，表达力丰富的类型系统</p>
+          </div>
+
+          <div class="card">
+            <h3>🛡️ 所有权模型</h3>
+            <p>编译期内存安全检查，无需垃圾回收即可防止内存泄漏</p>
+          </div>
+        </div>
+
+        <!-- 语法示例 -->
+        <div id="syntax-content" class="content-section" style="display:none;">
+          <h1>语法示例</h1>
+          <p>仓颉的语法简洁直观，降低了学习成本的同时保持了强大的表达能力。</p>
+
+          <h2>Hello World</h2>
+          <div class="card">
+            <h3>👋 入门示例</h3>
+            <p><code>main() { println("Hello, 仓颉!") }</code></p>
+            <p>简洁的入口函数，直接运行</p>
+          </div>
+
+          <h2>函数定义</h2>
+          <div class="card">
+            <h3>📐 函数语法</h3>
+            <p><code>fn add(x: Int64, y: Int64): Int64 { return x + y }</code></p>
+            <p>清晰的类型标注与返回值声明</p>
+          </div>
+
+          <h2>模式匹配</h2>
+          <div class="card">
+            <h3>🔀 match 表达式</h3>
+            <p><code>match (shape) { Circle(r) => 3.14 * r * r | Rectangle(w, h) => w * h }</code></p>
+            <p>强大的模式匹配，支持解构与守卫</p>
+          </div>
+        </div>
+
+        <!-- 开发生态 -->
+        <div id="ecosystem-content" class="content-section" style="display:none;">
+          <h1>开发生态</h1>
+          <p>仓颉语言持续构建完善的开发工具链和社区生态。</p>
+
+          <h2>开发工具</h2>
+          <div class="card">
+            <h3>🔧 仓颉编译器</h3>
+            <p>高性能 AOT 编译器，生成优化的本地代码</p>
+          </div>
+
+          <div class="card">
+            <h3>📦 包管理器</h3>
+            <p>内置包管理工具，轻松管理项目依赖</p>
+          </div>
+
+          <div class="card">
+            <h3>🧪 测试框架</h3>
+            <p>内置单元测试支持，<code>cjpm test</code> 一键运行</p>
+          </div>
+
+          <h2>社区资源</h2>
+          <p>官方文档 · 开发者论坛 · 示例仓库 · 技术博客</p>
+        </div>
+
+        <!-- 互操作性 -->
+        <div id="interop-content" class="content-section" style="display:none;">
+          <h1>互操作性</h1>
+          <p>仓颉支持与多种语言和平台进行互操作，方便集成到现有系统中。</p>
+
+          <h2>互操作方式</h2>
+          <div class="card">
+            <h3>🔗 C 语言互操作</h3>
+            <p>通过 FFI 机制调用 C 库函数，复用海量 C 代码资产</p>
+          </div>
+
+          <div class="card">
+            <h3>🐍 Python 互操作</h3>
+            <p>支持调用 Python 模块，方便使用 Python 生态的 AI 库</p>
+          </div>
+
+          <div class="card">
+            <h3>☕ Java 互操作</h3>
+            <p>通过 JNI 桥接机制与 Java 代码互相调用</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="app-footer">
+    <p>© 2025 CANN · 模型训练与智能计算</p>
+  </footer>
+
+  <!-- 背景音乐 -->
+  <audio id="bgMusic"></audio>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>

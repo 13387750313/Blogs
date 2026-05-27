@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>精致美食 - 探索美味</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="app-header">
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link" data-page="index">首页</a>
+      <a href="cann.html" class="nav-link" data-page="cann">CANN</a>
+      <a href="cangjie.html" class="nav-link" data-page="cangjie">仓颉</a>
+      <a href="arkts.html" class="nav-link" data-page="arkts">ArkTs</a>
+      <a href="loongarch.html" class="nav-link" data-page="loongarch">LoongArch</a>
+      <a href="toolbox.html" class="nav-link" data-page="toolbox">工具箱</a>
+      <a href="model.html" class="nav-link" data-page="model">三维建模</a>
+      <a href="fine.html" class="nav-link active" data-page="fine">精致美食</a>
+      <a href="music.html" class="nav-link" data-page="music">🎵 音乐</a>
+    </nav>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <div class="sidebar-layout">
+      <!-- 左侧边栏 -->
+      <aside class="sidebar">
+        <h2>美食分类</h2>
+        <ul id="foodList">
+          <li data-food="homecooking" class="active">🍳 家常菜</li>
+          <li data-food="cantonese">🥘 八大菜系</li>
+          <li data-food="japanese">🍣 日料</li>
+          <li data-food="french">🥐 法料</li>
+          <li data-food="dessert">🍰 甜品</li>
+          <li data-food="drink">☕ 饮品</li>
+        </ul>
+      </aside>
+
+      <!-- 右侧内容 -->
+      <div class="content-area">
+        <!-- 家常菜 -->
+        <div id="homecooking-content" class="food-section active">
+          <h1>家常美食</h1>
+          <p>家的味道，温暖的记忆。简单食材，烹饪出幸福的味道。</p>
+          
+          <div class="card">
+            <h3>🍖 红烧肉</h3>
+            <p>色泽红亮，肥而不腻，入口即化。这道经典家常菜承载着无数家庭的温暖回忆。</p>
+            <div class="rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+              <span style="margin-left: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">4.0分</span>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3>🍅 西红柿炒鸡蛋</h3>
+            <p>酸甜可口，营养丰富。看似简单却极具魅力的一道菜，是很多人学会的第一道菜。</p>
+            <div class="rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+              <span style="margin-left: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">3.0分</span>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3>🥬 蒜蓉西兰花</h3>
+            <p>翠绿欲滴，清脆爽口。简单的烹饪保留蔬菜最原始的营养与美味。</p>
+            <div class="rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span style="margin-left: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">5.0分</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 八大菜系 -->
+        <div id="cantonese-content" class="food-section" style="display:none;">
+          <h1>八大菜系 - 粤菜</h1>
+          <p>粤菜以清淡、鲜美、精致著称，注重食材的原汁原味，刀工精细，火候精准。</p>
+          
+          <div class="card">
+            <h3>🐔 白切鸡</h3>
+            <p>皮滑肉嫩，清淡鲜美。最大程度体现鸡肉的原汁原味，是粤菜的经典代表。</p>
+            <div class="rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3>🦐 白灼虾</h3>
+            <p>鲜甜弹牙，简单的烹饪最大程度保留虾的鲜味。</p>
+          </div>
+          
+          <div class="card">
+            <h3>🥣 煲仔饭</h3>
+            <p>米饭香软，锅巴焦脆，配上腊味或滑鸡，回味无穷。</p>
+          </div>
+        </div>
+
+        <!-- 日料 -->
+        <div id="japanese-content" class="food-section" style="display:none;">
+          <h1>日本料理</h1>
+          <p>精致、讲究、注重食材的季节性和新鲜度。每一道料理都是艺术品。</p>
+          
+          <div class="card">
+            <h3>🍣 寿司</h3>
+            <p>精致的醋饭搭配新鲜的海鲜，小小一件蕴含着师傅多年的技艺与心意。</p>
+            <div class="rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3>🍜 拉面</h3>
+            <p>浓郁的汤底，劲道的面条，配上各种配料，一碗治愈心灵的美食。</p>
+          </div>
+        </div>
+
+        <!-- 法料 -->
+        <div id="french-content" class="food-section" style="display:none;">
+          <h1>法国料理</h1>
+          <p>精致、讲究、注重酱汁和摆盘的艺术。每一道菜都体现着厨师的匠心独运。</p>
+          
+          <div class="card">
+            <h3>🦢 鹅肝</h3>
+            <p>细腻醇厚，入口即化。作为法式大餐的代表，堪称美食中的奢侈品。</p>
+            <div class="rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3>🥐 可颂</h3>
+            <p>层层酥脆，黄油香气浓郁。早餐桌上的经典法式美味。</p>
+          </div>
+        </div>
+
+        <!-- 甜品 -->
+        <div id="dessert-content" class="food-section" style="display:none;">
+          <h1>甜品时光</h1>
+          <p>甜蜜的享受，治愈的味道。用甜点给生活加点糖。</p>
+          
+          <div class="card">
+            <h3>🍰 提拉米苏</h3>
+            <p>意大利经典甜品，咖啡与马斯卡彭的完美结合。苦与甜的交融让人欲罢不能。</p>
+            <div class="rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3>🧁 舒芙蕾</h3>
+            <p>云朵般的轻盈口感，稍纵即逝的美味，必须现做现吃。</p>
+          </div>
+        </div>
+
+        <!-- 饮品 -->
+        <div id="drink-content" class="food-section" style="display:none;">
+          <h1>饮品世界</h1>
+          <p>从茶到咖啡，从果汁到调酒，每一种饮品都有独特的风味与故事。</p>
+          
+          <div class="card">
+            <h3>☕ 手冲咖啡</h3>
+            <p>品味咖啡豆最原始的风味。不同产地、不同烘焙方式，带给你独特的味觉之旅。</p>
+            <div class="rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3>🍵 中国茶</h3>
+            <p>绿茶的清香、红茶的醇厚、乌龙的韵味。细细品来，感受东方茶文化的魅力。</p>
+          </div>
+          
+          <div class="card">
+            <h3>🥤 鲜榨果汁</h3>
+            <p>当季水果，新鲜直榨。自然的甜味，最健康的饮品选择。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="app-footer">
+    <p>© 2025 CANN · 模型训练与智能计算</p>
+  </footer>
+
+  <!-- 背景音乐 -->
+  <audio id="bgMusic"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

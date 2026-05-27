@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoongArch - 龙芯技术</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="app-header">
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link" data-page="index">首页</a>
+      <a href="cann.html" class="nav-link" data-page="cann">CANN</a>
+      <a href="cangjie.html" class="nav-link" data-page="cangjie">仓颉</a>
+      <a href="arkts.html" class="nav-link" data-page="arkts">ArkTs</a>
+      <a href="loongarch.html" class="nav-link active" data-page="loongarch">LoongArch</a>
+      <a href="toolbox.html" class="nav-link" data-page="toolbox">工具箱</a>
+      <a href="model.html" class="nav-link" data-page="model">三维建模</a>
+      <a href="fine.html" class="nav-link" data-page="fine">精致美食</a>
+      <a href="music.html" class="nav-link" data-page="music">🎵 音乐</a>
+    </nav>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <div class="sidebar-layout">
+      <!-- 左侧边栏 -->
+      <aside class="sidebar">
+        <h2>技术导航</h2>
+        <ul id="topicsList">
+          <li data-topic="loongarch" class="active">LoongArch 嵌入式</li>
+          <li data-topic="arm">ARM 嵌入式</li>
+          <li data-topic="loongnix">Loongnix 系统</li>
+          <li data-topic="deepin">Deepin V25</li>
+          <li data-topic="loongnix25">Loongnix 25</li>
+          <li data-topic="cpp">C/C++ 编程</li>
+          <li data-topic="html">HTML 前端</li>
+          <li data-topic="css">CSS 样式</li>
+          <li data-topic="js">JavaScript</li>
+          <li data-topic="vue">Vue 3 框架</li>
+          <li data-topic="blender">Blender 3D</li>
+          <li data-topic="mariadb">MariaDB</li>
+        </ul>
+      </aside>
+
+      <!-- 右侧内容 -->
+      <div class="content-area">
+        <div id="loongarch-content" class="content-section active">
+          <h1>LoongArch 嵌入式开发</h1>
+          <p>LoongArch 是龙芯自主设计的指令集架构，专为嵌入式系统优化，性能媲美 ARM Cortex-A 系列，完全自主可控。</p>
+          
+          <h2>核心优势</h2>
+          <div class="card">
+            <h3>🛡️ 安全可控</h3>
+            <p>自主研发的指令集，从硬件到软件完全可控，无后门风险</p>
+          </div>
+          <div class="card">
+            <h3>⚡ 高性能低功耗</h3>
+            <p>采用先进制程工艺，性能提升显著，功耗控制优秀</p>
+          </div>
+          <div class="card">
+            <h3>🌐 生态完善</h3>
+            <p>支持 Linux、RTOS 等主流系统，开发工具链齐全</p>
+          </div>
+          
+          <h2>应用场景</h2>
+          <p>工业控制 · 物联网设备 · 边缘计算 · 安全网关 · 智能终端</p>
+        </div>
+
+        <div id="arm-content" class="content-section" style="display:none;">
+          <h1>ARM 嵌入式开发</h1>
+          <p>ARM 架构是目前最流行的嵌入式处理器架构，广泛应用于智能手机、物联网设备等场景。</p>
+          <div class="card">
+            <h3>📦 生态完善</h3>
+            <p>成熟的工具链和丰富的社区资源</p>
+          </div>
+          <div class="card">
+            <h3>🛠️ 工具丰富</h3>
+            <p>Keil、IAR、GCC 等专业开发环境</p>
+          </div>
+        </div>
+
+        <div id="loongnix-content" class="content-section" style="display:none;">
+          <h1>Loongnix 系统</h1>
+          <p>基于 LoongArch 架构的 Linux 发行版，专为嵌入式设备设计，提供完整的开发环境。</p>
+          <h2>快速上手</h2>
+          <p>安装命令：<code>sudo apt install loongnix-desktop</code></p>
+        </div>
+
+        <div id="deepin-content" class="content-section" style="display:none;">
+          <h1>Deepin V25</h1>
+          <p>深度科技打造的国产操作系统，基于 Debian 稳定版打造，用户体验优秀。</p>
+        </div>
+
+        <div id="loongnix25-content" class="content-section" style="display:none;">
+          <h1>Loongnix 25</h1>
+          <p>新一代龙芯操作系统，带来更多特性与优化。</p>
+        </div>
+
+        <div id="cpp-content" class="content-section" style="display:none;">
+          <h1>C/C++ 编程</h1>
+          <p>系统级编程的首选语言，高效、强大、跨平台。</p>
+        </div>
+
+        <div id="html-content" class="content-section" style="display:none;">
+          <h1>HTML 前端</h1>
+          <p>网页结构基础，语义化标签构建现代页面。</p>
+        </div>
+
+        <div id="css-content" class="content-section" style="display:none;">
+          <h1>CSS 样式</h1>
+          <p>控制网页外观，Flexbox、Grid 打造响应式布局。</p>
+        </div>
+
+        <div id="js-content" class="content-section" style="display:none;">
+          <h1>JavaScript</h1>
+          <p>网页交互核心，ES6+ 现代化语法，Node.js 全栈开发。</p>
+        </div>
+
+        <div id="vue-content" class="content-section" style="display:none;">
+          <h1>Vue 3 框架</h1>
+          <p>渐进式 JavaScript 框架，易学易用，生态丰富。</p>
+        </div>
+
+        <div id="blender-content" class="content-section" style="display:none;">
+          <h1>Blender 3D</h1>
+          <p>开源3D创作套件，建模、动画、渲染一站式完成。</p>
+        </div>
+
+        <div id="mariadb-content" class="content-section" style="display:none;">
+          <h1>MariaDB 数据库</h1>
+          <p>MySQL 的开源分支，高性能、高可靠的关系型数据库。</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="app-footer">
+    <p>© 2025 CANN · 模型训练与智能计算</p>
+  </footer>
+
+  <!-- 背景音乐 -->
+  <audio id="bgMusic"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

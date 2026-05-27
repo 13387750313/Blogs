@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>工具箱 - 开发工具集</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="app-header">
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link" data-page="index">首页</a>
+      <a href="cann.html" class="nav-link" data-page="cann">CANN</a>
+      <a href="cangjie.html" class="nav-link" data-page="cangjie">仓颉</a>
+      <a href="arkts.html" class="nav-link" data-page="arkts">ArkTs</a>
+      <a href="loongarch.html" class="nav-link" data-page="loongarch">LoongArch</a>
+      <a href="toolbox.html" class="nav-link active" data-page="toolbox">工具箱</a>
+      <a href="model.html" class="nav-link" data-page="model">三维建模</a>
+      <a href="fine.html" class="nav-link" data-page="fine">精致美食</a>
+      <a href="music.html" class="nav-link" data-page="music">🎵 音乐</a>
+    </nav>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <div class="sidebar-layout">
+      <!-- 左侧边栏 -->
+      <aside class="sidebar">
+        <h2>工具分类</h2>
+        <ul id="toolboxList">
+          <li data-tool="eth" class="active">🌐 网口通信</li>
+          <li data-tool="uart">🔌 串口通信</li>
+          <li data-tool="debug">🔍 调试工具</li>
+          <li data-tool="flash">💾 固件烧录</li>
+          <li data-tool="monitor">📊 系统监控</li>
+        </ul>
+      </aside>
+
+      <!-- 右侧内容 -->
+      <div class="content-area">
+        <div id="eth-content">
+          <h1>网口通信工具</h1>
+          <p>以太网通信是嵌入式设备中最常用的通信方式之一，支持高速数据传输和远程控制。</p>
+          
+          <h2>常用命令</h2>
+          <div class="card">
+            <h3>📡 Ping 测试</h3>
+            <p><code>ping 192.168.1.100</code></p>
+            <p>测试网络连通性和延迟</p>
+          </div>
+          
+          <div class="card">
+            <h3>🔧 网络配置</h3>
+            <p><code>ifconfig eth0 192.168.1.50 netmask 255.255.255.0 up</code></p>
+            <p>配置网口 IP 地址</p>
+          </div>
+          
+          <div class="card">
+            <h3>📋 端口扫描</h3>
+            <p><code>netstat -tuln | grep 8080</code></p>
+            <p>查看端口占用情况</p>
+          </div>
+          
+          <h2>协议说明</h2>
+          <p>TCP/UDP · HTTP · MQTT · CoAP · WebSocket</p>
+        </div>
+
+        <div id="uart-content" style="display:none;">
+          <h1>串口通信工具</h1>
+          <p>串口通信是嵌入式开发中最基础的调试方式，适用于短距离、低速数据传输。</p>
+          
+          <h2>配置参数</h2>
+          <div class="card">
+            <h3>⚙️ 标准设置</h3>
+            <p>波特率：115200 | 数据位：8 | 校验位：无 | 停止位：1</p>
+          </div>
+          
+          <div class="card">
+            <h3>🔧 常用工具</h3>
+            <p><code>minicom -D /dev/ttyUSB0 -b 115200</code></p>
+            <p>Linux 串口调试终端</p>
+          </div>
+          
+          <div class="card">
+            <h3>💻 Windows 工具</h3>
+            <p>SSCOM · SerialDebugger · MobaXterm</p>
+            <p>Windows 平台串口助手</p>
+          </div>
+        </div>
+
+        <div id="debug-content" style="display:none;">
+          <h1>调试工具集</h1>
+          <p>嵌入式开发过程中必备的调试工具，帮助快速定位和解决问题。</p>
+          
+          <h2>GDB 调试器</h2>
+          <p><code>gdb ./app.elf</code></p>
+          <p>强大的命令行调试工具，支持断点、内存查看、寄存器操作</p>
+        </div>
+
+        <div id="flash-content" style="display:none;">
+          <h1>固件烧录工具</h1>
+          <p>将编译好的程序烧录到芯片中，是嵌入式开发的最后一步。</p>
+          
+          <h2>常用工具</h2>
+          <div class="card">
+            <h3>🔧 命令行工具</h3>
+            <p><code>st-flash write firmware.bin 0x8000000</code></p>
+            <p>STM32 系列芯片烧录</p>
+          </div>
+        </div>
+
+        <div id="monitor-content" style="display:none;">
+          <h1>系统监控</h1>
+          <p>实时监控系统资源使用情况，辅助性能调优和故障排查。</p>
+          
+          <h2>常用命令</h2>
+          <p><code>top</code> - 进程监控</p>
+          <p><code>free -h</code> - 内存使用</p>
+          <p><code>df -h</code> - 磁盘空间</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="app-footer">
+    <p>© 2025 CANN · 模型训练与智能计算</p>
+  </footer>
+
+  <!-- 背景音乐 -->
+  <audio id="bgMusic"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

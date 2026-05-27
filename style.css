@@ -1,0 +1,753 @@
+/* ============================================
+   暗黑酷炫风格 - Cyberpunk Dark Theme
+   ============================================ */
+
+:root {
+  /* 主题色系 */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a2e;
+  --bg-hover: #252540;
+  --accent-cyan: #00f5ff;
+  --accent-purple: #b026ff;
+  --accent-pink: #ff2d95;
+  --accent-green: #00ff88;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  --text-muted: #606070;
+  --border-color: #2a2a40;
+  --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.3);
+  --glow-purple: 0 0 20px rgba(176, 38, 255, 0.3);
+  --glow-pink: 0 0 20px rgba(255, 45, 149, 0.3);
+}
+
+/* ============================================
+   基础重置
+   ============================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Roboto', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* 背景动画网格 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 49.5%, rgba(0, 245, 255, 0.03) 50%, transparent 50.5%),
+    linear-gradient(0deg, transparent 49.5%, rgba(0, 245, 255, 0.03) 50%, transparent 50.5%);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ============================================
+   顶部导航栏
+   ============================================ */
+.app-header {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.8rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  color: var(--accent-cyan);
+  background: rgba(0, 245, 255, 0.08);
+  border-color: rgba(0, 245, 255, 0.2);
+  text-shadow: var(--glow-cyan);
+}
+
+.nav-link.active {
+  color: var(--accent-cyan);
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.15), rgba(176, 38, 255, 0.1));
+  border: 1px solid var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+/* ============================================
+   主内容区
+   ============================================ */
+.main-content {
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ============================================
+   首页英雄区
+   ============================================ */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-shadow: none;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 245, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 245, 255, 0.5);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+/* ============================================
+   产品卡片网格
+   ============================================ */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
+
+.product-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(176, 38, 255, 0.1));
+  border-radius: 50%;
+  border: 1px solid rgba(0, 245, 255, 0.3);
+}
+
+.product-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: var(--accent-cyan);
+}
+
+.product-card h3 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.product-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* ============================================
+   侧边栏布局
+   ============================================ */
+.sidebar-layout {
+  display: flex;
+  gap: 2rem;
+  min-height: calc(100vh - 160px);
+}
+
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+
+.sidebar li:hover {
+  background: rgba(0, 245, 255, 0.08);
+  color: var(--accent-cyan);
+  border-color: rgba(0, 245, 255, 0.2);
+}
+
+.sidebar li.active {
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.15), rgba(176, 38, 255, 0.1));
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+  font-weight: 600;
+  box-shadow: var(--glow-cyan);
+}
+
+/* 自定义滚动条 */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--accent-cyan);
+  border-radius: 3px;
+}
+
+/* ============================================
+   内容区域
+   ============================================ */
+.content-area {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.content-area h1 {
+  color: var(--accent-cyan);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+  text-shadow: var(--glow-cyan);
+}
+
+.content-area h2 {
+  color: var(--accent-purple);
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent-purple);
+}
+
+.content-area p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.content-area code {
+  background: var(--bg-primary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: var(--accent-green);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.9em;
+}
+
+/* ============================================
+   内容切换动画
+   ============================================ */
+.content-section {
+  display: none;
+  animation: fadeSlideIn 0.5s ease;
+}
+
+.content-section.active {
+  display: block;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   卡片样式
+   ============================================ */
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.card h3 {
+  color: var(--accent-pink);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card p {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   三维建模页面
+   ============================================ */
+.model-container {
+  width: 100%;
+  height: calc(100vh - 140px);
+  background: var(--bg-primary);
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+#threeCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.model-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* ============================================
+   底部播放器
+   ============================================ */
+.music-player {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-cyan);
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  box-shadow: var(--glow-cyan);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.music-player .track-info {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.music-player .controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.music-player button {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.music-player button:hover {
+  transform: scale(1.1);
+  box-shadow: var(--glow-cyan);
+}
+
+.music-player .volume-slider {
+  width: 80px;
+  accent-color: var(--accent-cyan);
+}
+
+.music-player .status-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ============================================
+   页脚
+   ============================================ */
+.app-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  margin-top: auto;
+}
+
+/* ============================================
+   评分星星
+   ============================================ */
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--accent-cyan);
+  font-size: 1.1rem;
+}
+
+.star {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.star:hover {
+  transform: scale(1.3);
+  color: var(--accent-pink);
+}
+
+/* ============================================
+   响应式设计
+   ============================================ */
+
+/* 平板设备 */
+@media (max-width: 1024px) {
+  .sidebar-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .sidebar li {
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* 手机设备 */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0.6rem 0.5rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .main-content {
+    padding: 1rem 0.75rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .product-card {
+    padding: 1.5rem;
+  }
+
+  .content-area {
+    padding: 1.5rem 1rem;
+  }
+
+  .content-area h1 {
+    font-size: 1.5rem;
+  }
+
+  .sidebar {
+    padding: 1rem;
+  }
+
+  .sidebar li {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .model-container {
+    height: calc(100vh - 200px);
+  }
+
+  .music-player {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    flex-wrap: wrap;
+    max-width: calc(100% - 1rem);
+  }
+
+  .music-player .volume-slider {
+    width: 60px;
+  }
+
+  .btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 小屏手机 */
+@media (max-width: 480px) {
+  .nav-link {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .sidebar ul {
+    flex-direction: column;
+  }
+
+  .sidebar li {
+    width: 100%;
+  }
+
+  .product-card {
+    padding: 1.2rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .music-player {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .music-player .volume-slider {
+    width: 100%;
+  }
+}
+
+/* 横屏手机 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .model-container {
+    height: calc(100vh - 100px);
+  }
+
+  .hero {
+    padding: 1.5rem;
+  }
+}
+
+/* ============================================
+   打印样式
+   ============================================ */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .app-header,
+  .music-player,
+  .sidebar {
+    display: none;
+  }
+
+  .content-area {
+    border: none;
+    background: white;
+  }
+}

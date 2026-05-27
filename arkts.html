@@ -1,0 +1,189 @@
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArkTs - 鸿蒙应用开发语言</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="app-header">
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link" data-page="index">首页</a>
+      <a href="cann.html" class="nav-link" data-page="cann">CANN</a>
+      <a href="cangjie.html" class="nav-link" data-page="cangjie">仓颉</a>
+      <a href="arkts.html" class="nav-link active" data-page="arkts">ArkTs</a>
+      <a href="loongarch.html" class="nav-link" data-page="loongarch">LoongArch</a>
+      <a href="toolbox.html" class="nav-link" data-page="toolbox">工具箱</a>
+      <a href="model.html" class="nav-link" data-page="model">三维建模</a>
+      <a href="fine.html" class="nav-link" data-page="fine">精致美食</a>
+      <a href="music.html" class="nav-link" data-page="music">🎵 音乐</a>
+    </nav>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <div class="sidebar-layout">
+      <!-- 左侧边栏 -->
+      <aside class="sidebar">
+        <h2>ArkTs 导航</h2>
+        <ul id="arktsNavList">
+          <li data-section="overview" class="active">📋 语言概览</li>
+          <li data-section="arkui">📱 ArkUI 框架</li>
+          <li data-section="components">🧩 组件开发</li>
+          <li data-section="crossdevice">🔄 跨端适配</li>
+          <li data-section="compiler">⚙️ 方舟编译器</li>
+        </ul>
+      </aside>
+
+      <!-- 右侧内容 -->
+      <div class="content-area">
+        <!-- 语言概览 -->
+        <div id="overview-content" class="content-section active">
+          <h1>ArkTs - 鸿蒙应用开发语言</h1>
+          <p>ArkTs 是华为为 HarmonyOS 打造的主力应用开发语言，基于 TypeScript 扩展，提供声明式 UI 开发范式。</p>
+
+          <h2>核心优势</h2>
+          <div class="card">
+            <h3>📱 声明式 UI</h3>
+            <p>采用 ArkUI 声明式开发范式，高效构建跨设备自适应界面</p>
+          </div>
+
+          <div class="card">
+            <h3>🔄 跨端协同</h3>
+            <p>一套代码适配手机、平板、穿戴、车机等多种终端设备</p>
+          </div>
+
+          <div class="card">
+            <h3>⚙️ 方舟编译器</h3>
+            <p>通过 ArkCompiler 实现 AOT 编译，显著提升应用运行性能</p>
+          </div>
+
+          <h2>开发生态</h2>
+          <p>DevEco Studio · 鸿蒙 SDK · 应用市场 · 开发者社区 · 技术认证</p>
+        </div>
+
+        <!-- ArkUI 框架 -->
+        <div id="arkui-content" class="content-section" style="display:none;">
+          <h1>ArkUI 框架</h1>
+          <p>ArkUI 是 HarmonyOS 提供的声明式 UI 开发框架，支持丰富的组件和灵活的布局方式。</p>
+
+          <h2>布局方式</h2>
+          <div class="card">
+            <h3>📐 线性布局 Column/Row</h3>
+            <p><code>Column() { Text('Hello') }.width('100%').height('100%')</code></p>
+            <p>纵向/横向排列子组件，最基础的布局方式</p>
+          </div>
+
+          <div class="card">
+            <h3>🔲 弹性布局 Flex</h3>
+            <p>支持自动换行、对齐方式、空间分配等高级布局控制</p>
+          </div>
+
+          <div class="card">
+            <h3>📊 栅格布局 GridRow</h3>
+            <p>基于断点的响应式栅格系统，适配不同屏幕尺寸</p>
+          </div>
+
+          <h2>状态管理</h2>
+          <p>@State · @Prop · @Link · @Provide · @Consume · @Observed</p>
+        </div>
+
+        <!-- 组件开发 -->
+        <div id="components-content" class="content-section" style="display:none;">
+          <h1>组件开发</h1>
+          <p>ArkUI 提供丰富的系统组件，同时支持开发者自定义组件。</p>
+
+          <h2>常用组件</h2>
+          <div class="card">
+            <h3>📝 Text 文本</h3>
+            <p><code>Text('Hello ArkTs').fontSize(24).fontColor('#00f5ff')</code></p>
+            <p>文本显示组件，支持富文本、截断、对齐等属性</p>
+          </div>
+
+          <div class="card">
+            <h3>🖼️ Image 图片</h3>
+            <p><code>Image($r('app.media.logo')).width(100).height(100)</code></p>
+            <p>图片显示组件，支持本地/网络图片加载</p>
+          </div>
+
+          <div class="card">
+            <h3>📋 List 列表</h3>
+            <p><code>List() { ForEach(dataArray, item => ListItem() { Text(item) }) }</code></p>
+            <p>高性能列表组件，支持懒加载与滑动操作</p>
+          </div>
+
+          <div class="card">
+            <h3>🧭 Tabs 页签</h3>
+            <p>多页签导航组件，支持顶部/底部切换与自定义页签栏</p>
+          </div>
+        </div>
+
+        <!-- 跨端适配 -->
+        <div id="crossdevice-content" class="content-section" style="display:none;">
+          <h1>跨端适配</h1>
+          <p>HarmonyOS 的多设备协同能力，让应用一次开发、多端部署。</p>
+
+          <h2>适配策略</h2>
+          <div class="card">
+            <h3>📱 响应式布局</h3>
+            <p>使用媒体查询和断点系统，自动适配不同屏幕尺寸</p>
+          </div>
+
+          <div class="card">
+            <h3>🔄 多端迁移</h3>
+            <p>支持应用状态在设备间无缝迁移，延续用户体验</p>
+          </div>
+
+          <div class="card">
+            <h3>🖥️ 自适应组件</h3>
+            <p>Navigation、SideBarContainer 等组件自动适配手机/平板/PC</p>
+          </div>
+
+          <h2>目标设备</h2>
+          <p>智能手机 · 平板电脑 · 智能穿戴 · 智慧屏 · 车机系统</p>
+        </div>
+
+        <!-- 方舟编译器 -->
+        <div id="compiler-content" class="content-section" style="display:none;">
+          <h1>方舟编译器</h1>
+          <p>ArkCompiler 是华为自研的应用编译器，为 ArkTs 提供高效的编译执行能力。</p>
+
+          <h2>编译特性</h2>
+          <div class="card">
+            <h3>⚡ AOT 编译</h3>
+            <p>应用安装时直接编译为机器码，运行时无需解释执行，启动速度提升 60%</p>
+          </div>
+
+          <div class="card">
+            <h3>🧹 无 GC 运行</h3>
+            <p>采用引用计数内存管理，消除垃圾回收带来的卡顿</p>
+          </div>
+
+          <div class="card">
+            <h3>🔧 多语言编译</h3>
+            <p>支持 ArkTs、JS、C/C++ 统一编译，跨语言高效调用</p>
+          </div>
+
+          <h2>性能数据</h2>
+          <p>应用启动提升 60% · 滑动流畅度提升 50% · 内存占用降低 30%</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="app-footer">
+    <p>© 2025 CANN · 模型训练与智能计算</p>
+  </footer>
+
+  <!-- 背景音乐 -->
+  <audio id="bgMusic"></audio>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>

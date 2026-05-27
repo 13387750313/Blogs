@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CANN · 模型训练 - 3D Showcase</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .model-layout {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 20px;
+      padding: 20px;
+      min-height: calc(100vh - 160px);
+    }
+    .model-viewer {
+      background: #0a0a0f;
+      border-radius: 16px;
+      border: 1px solid #2a2a40;
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+    }
+    #threeCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .model-info-bar {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #606070;
+      font-size: 0.85rem;
+      background: rgba(10, 10, 15, 0.9);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid #2a2a40;
+    }
+    .model-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.2rem;
+    }
+    .info-card h3 {
+      color: var(--accent-cyan);
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .info-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .progress-bar {
+      height: 8px;
+      background: var(--bg-secondary);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 0.8rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00f5ff, #b026ff);
+      border-radius: 4px;
+      transition: width 0.5s;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 0.8rem;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+    }
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+    .training-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .training-steps li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .training-steps li:last-child {
+      border-bottom: none;
+    }
+    .step-num {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #00f5ff, #b026ff);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: white;
+    }
+    @media (max-width: 900px) {
+      .model-layout {
+        grid-template-columns: 1fr;
+      }
+      .model-sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .info-card {
+        flex: 1;
+        min-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="app-header">
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link" data-page="index">首页</a>
+      <a href="cann.html" class="nav-link" data-page="cann">CANN</a>
+      <a href="cangjie.html" class="nav-link" data-page="cangjie">仓颉</a>
+      <a href="arkts.html" class="nav-link" data-page="arkts">ArkTs</a>
+      <a href="loongarch.html" class="nav-link" data-page="loongarch">LoongArch</a>
+      <a href="toolbox.html" class="nav-link" data-page="toolbox">工具箱</a>
+      <a href="model.html" class="nav-link active" data-page="model">三维建模</a>
+      <a href="fine.html" class="nav-link" data-page="fine">精致美食</a>
+      <a href="music.html" class="nav-link" data-page="music">🎵 音乐</a>
+    </nav>
+  </header>
+
+  <!-- 主内容 -->
+  <main class="main-content">
+    <div class="model-layout">
+      <!-- 3D场景 -->
+      <div class="model-viewer">
+        <canvas id="threeCanvas"></canvas>
+        <div class="model-info-bar">拖拽旋转 · 滚轮缩放</div>
+      </div>
+      
+      <!-- 侧边信息 -->
+      <aside class="model-sidebar">
+        <div class="info-card">
+          <h3>🎯 模型训练简介</h3>
+          <p>深度学习模型训练是将数据转化为智能的过程，通过反复迭代优化参数，使模型能够识别模式、做出预测。</p>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 73%"></div>
+          </div>
+          <div class="progress-label">
+            <span>训练进度</span>
+            <span>73%</span>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <h3>📊 训练统计</h3>
+          <div class="stat-row">
+            <div class="stat-item">
+              <div class="stat-value">1,247</div>
+              <div class="stat-label">Epochs</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">94.2%</div>
+              <div class="stat-label">准确率</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">0.023</div>
+              <div class="stat-label">Loss</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">12h</div>
+              <div class="stat-label">耗时</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <h3>🔧 训练流程</h3>
+          <ul class="training-steps">
+            <li><span class="step-num">1</span> 数据预处理与增强</li>
+            <li><span class="step-num">2</span> 模型架构设计</li>
+            <li><span class="step-num">3</span> 损失函数定义</li>
+            <li><span class="step-num">4</span> 反向传播优化</li>
+            <li><span class="step-num">5</span> 模型评估验证</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="app-footer">
+    <p>© 2025 CANN · CyberVerse | 嵌入式 · LoongArch · 3D · 美食</p>
+  </footer>
+
+  <!-- Three.js CDN -->
+  <script src="https://unpkg.com/three@0.150.0/build/three.min.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var canvas = document.getElementById('threeCanvas');
+      var container = canvas.parentElement;
+      
+      var scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0a0a0f);
+      
+      var camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.z = 4;
+      
+      var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      
+      var ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+      scene.add(ambientLight);
+      
+      var pointLight1 = new THREE.PointLight(0x00f5ff, 1, 20);
+      pointLight1.position.set(5, 5, 5);
+      scene.add(pointLight1);
+      
+      var pointLight2 = new THREE.PointLight(0xb026ff, 1, 20);
+      pointLight2.position.set(-5, -5, 5);
+      scene.add(pointLight2);
+      
+      var cubeGeometry = new THREE.BoxGeometry(1.2, 1.2, 1.2);
+      var cubeMaterial = new THREE.MeshPhongMaterial({ 
+        color: 0x00f5ff,
+        emissive: 0x003333,
+        shininess: 100
+      });
+      var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+      scene.add(cube);
+      
+      var torusGeometry = new THREE.TorusGeometry(2, 0.06, 16, 80);
+      var torusMaterial = new THREE.MeshPhongMaterial({ 
+        color: 0xb026ff,
+        emissive: 0x220033
+      });
+      var torus = new THREE.Mesh(torusGeometry, torusMaterial);
+      scene.add(torus);
+      
+      var torus2 = new THREE.Mesh(
+        new THREE.TorusGeometry(2.4, 0.04, 16, 60),
+        new THREE.MeshPhongMaterial({ color: 0xff2d95, emissive: 0x330011 })
+      );
+      torus2.rotation.x = Math.PI / 3;
+      torus2.rotation.y = Math.PI / 4;
+      scene.add(torus2);
+      
+      var starsGeometry = new THREE.BufferGeometry();
+      var starPositions = [];
+      for (var i = 0; i < 500; i++) {
+        starPositions.push(
+          (Math.random() - 0.5) * 30,
+          (Math.random() - 0.5) * 30,
+          (Math.random() - 0.5) * 30
+        );
+      }
+      starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starPositions, 3));
+      var starsMaterial = new THREE.PointsMaterial({ 
+        color: 0xffffff, 
+        size: 0.05,
+        transparent: true,
+        opacity: 0.8
+      });
+      var stars = new THREE.Points(starsGeometry, starsMaterial);
+      scene.add(stars);
+      
+      var isDragging = false;
+      var previousMousePosition = { x: 0, y: 0 };
+      
+      canvas.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        previousMousePosition = { x: e.clientX, y: e.clientY };
+      });
+      
+      canvas.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+          var deltaX = e.clientX - previousMousePosition.x;
+          var deltaY = e.clientY - previousMousePosition.y;
+          
+          cube.rotation.y += deltaX * 0.01;
+          cube.rotation.x += deltaY * 0.01;
+          torus.rotation.y += deltaX * 0.005;
+          torus2.rotation.y += deltaX * 0.003;
+          
+          previousMousePosition = { x: e.clientX, y: e.clientY };
+        }
+      });
+      
+      canvas.addEventListener('mouseup', function() { isDragging = false; });
+      canvas.addEventListener('mouseleave', function() { isDragging = false; });
+      
+      canvas.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        camera.position.z += e.deltaY * 0.005;
+        camera.position.z = Math.max(2, Math.min(10, camera.position.z));
+      });
+      
+      window.addEventListener('resize', function() {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        
+        cube.rotation.x += 0.005;
+        cube.rotation.y += 0.008;
+        torus.rotation.z += 0.002;
+        torus2.rotation.z -= 0.001;
+        stars.rotation.y += 0.0003;
+        
+        renderer.render(scene, camera);
+      }
+      animate();
+    });
+  </script>
+  <!-- 背景音乐 -->
+  <audio id="bgMusic"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
